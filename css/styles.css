@@ -1,11 +1,11 @@
 /* globales */
 :root {
-    --blanco: #FFFFFF;
-    --oscuro: #212121;
-    --primario: #ffc107;
-    --secundario: #0097a7;
-    --gris: #757575;
-    --grisclaro: #DFE9F3;
+    --blanco: #EFEFEF; /* FONDO CUADRADOS*/
+    --oscuro: #000; /*ENCABEZADOS*/
+    --primario: #0A3143; /* HOVER */
+    --secundario: #276E90; /* BARRA NAVEGACIÓN */
+    --gris: #CECFC9; /*contacto*/
+    --grisclaro: #CECFC9; /*FONDO PRINCIPAL TIENE UN GRADIENTE*/
 }
 
 html{
@@ -15,12 +15,12 @@ html{
 }
 
 /* Scroll snap */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .servicio, .navegacion-principal, .formulario{
         scroll-snap-align: center;
         scroll-snap-stop:always;
     }
-}
+} */
 
 
 *,*:before,*:after{
@@ -30,7 +30,6 @@ html{
 body{
     font-size: 16px; /* 1rem = 10px*/
     font-family: 'Krub', sans-serif;
-    background-image: linear-gradient(to top, var(--grisclaro) 0%, var(--blanco) 100%);
 }
 
 .sombra{
@@ -43,6 +42,8 @@ body{
 .contenedor{
     max-width: 120rem;
     margin: 0 auto;
+    margin-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 .boton{
@@ -63,12 +64,18 @@ body{
 @media (min-width: 768px) {
      .boton{
         width: auto;  
-        margin-top: 7rem;          
+        margin-top: 7rem;     
+        border: 0.1rem solid var(--oscuro);
      }
 }
 
 .boton:hover{
     cursor: pointer;
+    background-color: var(--primario);
+    color: var(--blanco);
+    border: 0.1rem solid var(--grisclaro);
+    scale: 1.1;
+    transition: 0.2s;
 }
 
 /* tipografía */
@@ -86,6 +93,7 @@ h3{
 
 h1,h2,h3{
     text-align: center;
+    color: var(--oscuro);
 }
 
 /* titulos */
@@ -111,42 +119,55 @@ h1,h2,h3{
 }
 
 /* Navegación principal */
+
+header a{
+    text-decoration: none;
+}
+
 .nav-bg{
-    background-color: var(--secundario);
+    background-color: var(--secundario);    
 }
 
 .navegacion-principal{
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
 }
 
 
 @media (min-width: 768px) {
      .navegacion-principal{
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-evenly;
+     }
+     .nav-bg{
+        position: sticky;
+        z-index: 100;
+        top: 0;
      }
 }
 
 .navegacion-principal a{
     display: block;
     text-align: center;
-    padding: 1rem 5rem;
-    color: var(--blanco);
+    padding: 1.2rem 5rem;
+    color: var(--oscuro);
     text-decoration: none;
     font-size: 2rem;
     font-weight: 700;
 } 
 
 .navegacion-principal a:hover{
-    background-color: var(--primario);
-    color: var(--oscuro);
+    color: var(--grisclaro);
+    scale: 1.1;
+    transition: 0.2s;
 }
 
 .hero{
     background-image: url(../img/hero.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     height: 450px;
     position:relative;  
     margin-bottom: 2rem;
@@ -154,7 +175,6 @@ h1,h2,h3{
 
 .contenido-hero{
     position: absolute;
-    /*background-color: rgba(0,0,0,.7);  anterior */
     background-color: rgb( 0 0 0 / 70%);
     width: 100%;
     height: 100%;
@@ -190,13 +210,32 @@ h1,h2,h3{
 
 .servicio h3{
     color: var(--secundario);
-    font-weight: normal;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .servicio h3{
+        margin-top: 4rem;
+    }
 }
 
 .servicio p{
     line-height: 2;
     text-align: center;
 }
+
+@media (min-width: 768px) {
+    #icono1 p {
+        display: none;
+    }
+    #icono2 p {
+        display: none;
+    }
+    #icono3 p {
+        display: none;
+    }
+}
+
 
 .servicio .iconos{
     height: 15rem;
@@ -206,6 +245,11 @@ h1,h2,h3{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.iconos:hover{
+    scale: 1.1; 
+    transition: 0.3s;   
 }
 
 /* contacto */
@@ -227,7 +271,7 @@ h1,h2,h3{
     text-align: center;
     font-size: 1.8rem;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 2rem;
 }
 
@@ -246,10 +290,11 @@ h1,h2,h3{
 
 .campos {
     margin-bottom: 1rem;
+    
 }
 
 .campos label {
-    color: var(--blanco);
+    color: var(--oscuro);
     font-weight: bold;
     margin-bottom: .5rem;
     display: block;
